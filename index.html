@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salsabila Alya Ramadhani | Portofolio</title>
+  <meta name="description" content="Portofolio Salsabila Alya Ramadhani, mahasiswa S1 Sistem Informasi Universitas Negeri Surabaya.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #12261f;
+      --paper: #f4f7f5;
+      --panel: #e6efea;
+      --green: #0f5c4d;
+      --gold: #f2c14e;
+      --muted: #4d6159;
+      --font: "Montserrat", "Segoe UI", Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #e8f1ed;
+        --paper: #0e1a16;
+        --panel: #16261f;
+        --green: #6fd1b9;
+        --gold: #f2c14e;
+        --muted: #a3b8af;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      font-family: var(--font);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    a:focus-visible, .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    ul { list-style: none; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 6vw;
+      background: var(--paper);
+      border-bottom: 1px solid var(--panel);
+    }
+    .brand { font-weight: 800; text-decoration: none; font-size: 1.1rem; }
+    .nav nav { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+    .nav nav a { text-decoration: none; font-size: .9rem; font-weight: 500; }
+    .nav nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .nav-cta { background: var(--green); color: var(--paper); padding: 6px 16px; border-radius: 999px; }
+
+    /* HERO */
+    .hero {
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center;
+      padding: 72px 6vw 88px;
+      min-height: calc(100vh - 60px);
+    }
+    .hero-sub { color: var(--muted); font-weight: 500; margin-bottom: 16px; }
+    .hero h1 {
+      font-size: clamp(2.8rem, 9vw, 6.2rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--green);
+      margin-bottom: 32px;
+    }
+    .hero-photo {
+      width: 100%; max-width: 340px; justify-self: center;
+      aspect-ratio: 3 / 4; object-fit: cover; object-position: top;
+      border-radius: 170px 170px 16px 16px;
+      box-shadow: 14px 14px 0 var(--gold);
+    }
+    .btn {
+      display: inline-block;
+      background: var(--green); color: var(--paper);
+      padding: 12px 28px; border-radius: 999px;
+      font-weight: 600; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn:hover { background: var(--ink); }
+
+    /* SECTIONS */
+    .section { padding: 80px 6vw; }
+    .section.alt { background: var(--panel); }
+    .section h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .section h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 14px; }
+    .lead { max-width: 70ch; margin-bottom: 36px; }
+
+    .identity {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;
+      margin-bottom: 48px;
+    }
+    .identity div { border-left: 4px solid var(--gold); padding-left: 14px; }
+    .identity dt { color: var(--muted); font-size: .85rem; }
+    .identity dd { font-weight: 600; }
+
+    .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 48px; margin-bottom: 32px; }
+    .timeline li { border-left: 2px solid var(--green); padding: 0 0 22px 18px; position: relative; }
+    .timeline li::before {
+      content: ""; position: absolute; left: -7px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--gold);
+    }
+    .timeline strong { display: block; }
+    .timeline span { display: block; color: var(--muted); font-size: .92rem; }
+    .timeline em { font-style: normal; font-size: .85rem; color: var(--green); font-weight: 600; }
+    .now { max-width: 70ch; }
+
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .card { background: var(--paper); border: 1px solid var(--green); border-radius: 12px; padding: 24px; }
+    .section:not(.alt) .card { background: var(--panel); border-color: transparent; border-top: 4px solid var(--gold); }
+    .card p { color: var(--muted); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tags li { background: var(--panel); border: 1px solid var(--green); border-radius: 999px; padding: 4px 14px; font-size: .9rem; }
+    .section:not(.alt) .tags li { background: var(--paper); }
+
+    /* CONTACT */
+    .contact { background: var(--green); color: var(--paper); }
+    .contact .lead { color: var(--paper); }
+    .links { margin-bottom: 32px; max-width: 520px; }
+    .links li { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.35); }
+    .links span { font-weight: 600; }
+    .links a { overflow-wrap: anywhere; }
+    .contact .btn { background: var(--gold); color: #12261f; }
+    .contact .btn:hover { background: var(--paper); }
+
+    footer { padding: 24px 6vw; text-align: center; font-size: .85rem; color: var(--muted); }
+
+    /* MOBILE */
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding-top: 40px; min-height: auto; }
+      .hero-photo { order: -1; max-width: 240px; justify-self: start; }
+      .nav { flex-direction: column; gap: 8px; }
+      .section { padding: 56px 6vw; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="brand" href="#home">Salsabila</a>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#skills">What I Can Do</a>
+      <a href="#achievement">Achievement</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <p class="hero-sub">Mahasiswa S1 Sistem Informasi, Universitas Negeri Surabaya</p>
+        <h1>Salsabila<br>Alya<br>Ramadhani</h1>
+        <a class="btn" href="#contact">Hubungi saya</a>
+      </div>
+      <img class="hero-photo" src="foto salsabila alya.jpg" alt="Foto Salsabila Alya Ramadhani">
+    </section>
+
+    <!-- ABOUT ME -->
+    <section class="section" id="about">
+      <h2>About Me</h2>
+      <p class="lead">Mahasiswa S1 Sistem Informasi Universitas Negeri Surabaya yang memiliki ketertarikan pada bidang teknologi dan pengembangan diri. Berpengalaman dalam organisasi, kepanitiaan, dan beberapa kali mengikuti lomba olahraga. Terbiasa bekerja sama dalam tim, bertanggung jawab terhadap tugas, dan cepat beradaptasi dengan lingkungan baru. Memiliki semangat belajar yang tinggi, khususnya di bidang teknologi, komunikasi, dan organisasi.</p>
+
+      <dl class="identity">
+        <div><dt>Nama</dt><dd>Salsabila Alya Ramadhani</dd></div>
+        <div><dt>NIM</dt><dd>26051214211</dd></div>
+        <div><dt>Prodi</dt><dd>S1 Sistem Informasi</dd></div>
+        <div><dt>Domisili</dt><dd>Kec. Candi, Kota Sidoarjo</dd></div>
+      </dl>
+
+      <div class="two-col">
+        <div>
+          <h3>Pendidikan</h3>
+          <ul class="timeline">
+            <li><strong>Universitas Negeri Surabaya</strong><span>S1 Sistem Informasi</span><em>2026 - sekarang</em></li>
+            <li><strong>SMA Darul Ulum 1 Peterongan</strong><span>Jurusan Saintek</span><em>2023 - 2026</em></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Pengalaman Organisasi &amp; Kepanitiaan</h3>
+          <ul class="timeline">
+            <li>
+              <strong>Anggota - Organisasi Intra Sekolah (OSIS), SMA Darul Ulum 1</strong>
+              <strong>Koordinator - Organisasi Intra Sekolah (OSIS), SMA Darul Ulum 1</strong>
+              <span>Mengembangkan kemampuan percaya diri, bekerja sama tim, koordinator, dan tanggung jawab.</span>
+              <span>Berpartisipasi dalam kegiatan dan program kerja yang diadakan di sekolah.</span>
+            </li>
+            <li>
+              <strong>Panitia anggota - FKO</strong>
+              <span>Memastikan rangkaian acara sesuai jobdesk.</span>
+              <span>Menjalankan tugas dan tanggung jawab sesuai jobdesk.</span>
+            </li>
+            <li>
+              <strong>Panitia anggota - Akhirussanah</strong>
+              <span>Menjalankan tugas dan tanggung jawab sesuai jobdesk.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="now"><strong>Aktivitas saat ini:</strong> Mahasiswa baru angkatan 2026, sedang mengikuti ospek di Universitas Negeri Surabaya.</p>
+    </section>
+
+    <!-- WHAT I CAN DO -->
+    <section class="section alt" id="skills">
+      <h2>What I Can Do</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Skill</h3>
+          <ul class="tags">
+            <li>Kerja sama tim</li>
+            <li>Cepat beradaptasi dengan lingkungan baru</li>
+            <li>Problem solving</li>
+            <li>Disiplin</li>
+            <li>Komunikatif</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Tools</h3>
+          <ul class="tags">
+            <li>Microsoft Word</li>
+            <li>PowerPoint</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENT -->
+    <section class="section" id="achievement">
+      <h2>Achievement</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Penulisan Proyek Antologi Cerpen (GSMB)</h3>
+          <p>Sertifikasi penulisan proyek antologi cerpen.</p>
+        </article>
+        <article class="card">
+          <h3>Google Gemini Academy</h3>
+          <p>Peserta / pemegang sertifikat.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <h2>Contact</h2>
+      <p class="lead">Terbuka untuk belajar, berkolaborasi, dan bekerja sama dalam tim. Silakan hubungi saya lewat email.</p>
+      <ul class="links">
+        <li><span>Email</span><a href="mailto:aly.ramadhani15@gmail.com">aly.ramadhani15@gmail.com</a></li>
+        <!-- Aktifkan setelah punya akun:
+        <li><span>GitHub</span><a href="https://github.com/USERNAME" target="_blank" rel="noopener">github.com/USERNAME</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/USERNAME" target="_blank" rel="noopener">linkedin.com/in/USERNAME</a></li>
+        -->
+      </ul>
+      <a class="btn" href="mailto:aly.ramadhani15@gmail.com">Kirim pesan</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Salsabila Alya Ramadhani. Semua hak dilindungi.</p>
+  </footer>
+
+</body>
+</html>
